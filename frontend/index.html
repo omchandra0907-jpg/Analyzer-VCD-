@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCD / OUT Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- The vibrant liquid background is back -->
+    <div class="liquid-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <header class="top-nav glass-panel">
+            <div class="nav-left">
+                <h1 class="main-title">VCD / OUT <span class="neon-text">ANALYZER</span></h1>
+            </div>
+            
+            <div class="nav-center">
+                <input type="text" id="trigger-search" placeholder="Search Data (e.g. 0xFF)..." class="search-box">
+                <div class="delta-wrapper">
+                    <div id="delta-time-display" class="delta-display">Δt: 0 ns</div>
+                    <button id="reset-cursors" class="tool-btn reset-btn">RESET</button>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="radix-toggle" class="tool-btn format-btn">FORMAT: HEX</button>
+                <div class="upload-group">
+                    <label for="vcd-upload" class="upload-btn neon-border">LOAD .VCD</label>
+                    <label for="vcd-upload" class="upload-btn neon-border">LOAD .OUT</label>
+                    <input type="file" id="vcd-upload" accept=".vcd,.out" style="display: none;">
+                </div>
+            </div>
+        </header>
+
+        <div class="workspace glass-panel">
+            <div class="vertical-sync-scroll">
+                <div class="signal-list" id="signal-list"></div>
+                <div class="viewer-area" id="horizontal-scroll">
+                    <canvas id="waveform-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="global-tooltip" class="global-tooltip"></div>
+
+    <script src="parser.js"></script>
+    <script src="renderer.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
